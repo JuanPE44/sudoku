@@ -3,21 +3,24 @@
 
 const tablero = document.querySelector('.tablero');
 const contNumeros = document.querySelector('.contenedor-numeros');
+const errores = document.querySelector('.errores');
+
 
 let numero = '';
 let numeroSeleccionado;
+let error = 0;
 
 
 let board = [
-    "--74916-5",
-    "2---6-3-9",
-    "-----7-1-",
-    "-586----4",
-    "--3----9-",
-    "--62--187",
-    "9-4-7---2",
-    "67-83----",
-    "81--45---"
+    "  74916 5",
+    "2   6 3 9",
+    "     7 1 ",
+    " 586    4",
+    "  3    9 ",
+    "  62  187",
+    "9 4 7   2",
+    "67 83    ",
+    "81  45   "
 ]
 
 let solution = [
@@ -66,6 +69,44 @@ const crearCasilla = (id1,id2,num) => {
     tablero.appendChild(div);
 }
 
+const pintarBorde = () => {
+    const casillas = document.querySelectorAll('.casilla');
+    for(let casilla of casillas) {
+        let ids = casilla.id
+        let id1 = parseInt(ids.charAt(0));
+        let id2 = parseInt(ids.charAt(1));
+        console.log(id2)
+        if(id1 === 2 || id1 === 5) {
+            casilla.classList.add('borde-abajo');
+        }
+        if(id2 === 2 || id2 === 5) {
+            casilla.classList.add('borde-derecha');
+        }
+    }
+}
+
+const comprobarError = (casilla) => {
+    let ids = casilla.id;
+    let id1 = parseInt(ids.charAt(0));
+    let id2 = parseInt(ids.charAt(1));
+
+    casilla.innerHTML !== solution[id1].charAt(id2) ? error++ : console.log('correcto');                    
+}
+
+const clickCasilla = () => {
+    tablero.addEventListener('click', (e)=> {
+        let casilla = e.target 
+        console.log(numeroSeleccionado)
+        if(casilla.classList.value === 'casilla' && numeroSeleccionado !== undefined) {
+            if(casilla.innerHTML === ' ') {
+                casilla.innerHTML = numeroSeleccionado;
+            }
+            comprobarError(casilla);
+            errores.innerHTML = 'Errores: '+error;
+        }	    
+    })
+}
+
 
 const seleccionarNumeros = () => {
     contNumeros.addEventListener('click', (e)=>{
@@ -84,7 +125,7 @@ const seleccionarNumeros = () => {
 
 
 const god = () => {
-
+    
     seleccionarNumeros()
     
     for(let i=0;i<9;i++) {
@@ -94,9 +135,8 @@ const god = () => {
 
         }
     }
-    
+    pintarBorde()
+    clickCasilla()    
 }
-
-
 
 god()

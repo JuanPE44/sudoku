@@ -2,32 +2,72 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
 body {
+    position: relative;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    /*
-    background: linear-gradient(45deg,#00ffff9c,#00ff0086);
-    */
+    background: linear-gradient(45deg,#8FFF00,#FFC300,#FF5733,#C70039); 
+    background-size: 400%;
+    animation: animacion-fondo 35s ease-in forwards infinite;
+}
+
+body:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #000000a9;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+}
+
+.informacion {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.errores {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #e24a4a;
 }
 
 .tablero {
     display: grid;
     grid-template-columns: repeat(9, 50px);
     grid-template-rows: repeat(9, 50px);
-    border: 1px solid rgb(85, 85, 85);
 }
+
 
 .casilla {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
-    border: 1px solid #000;
+    background: #000000a9;
+    color: #FFF;
+    border: .1px solid #ffffff05;
+}
+
+.casilla:hover {
+    background: #57575775;
+}
+
+.borde-derecha {
+    border-right: 3px solid #FFF;
+}
+
+.borde-abajo {
+    border-bottom: 3px solid #FFF;
 }
 
 .contenedor-numeros {
@@ -42,10 +82,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #24242486;
+    background: #111111c0;
+    color: #FFF;
     cursor: pointer;
 }
 
 .numero-seleccionado {
     background: #71ac76;
+}
+
+@keyframes animacion-fondo {
+	0%{background-position: left;}
+	50%{background-position: right;}
+	100%{background-position: left;}
 }
