@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /*
+    background: linear-gradient(45deg,#00ffff9c,#00ff0086);
+    */
+}
+
+.tablero {
+    display: grid;
+    grid-template-columns: repeat(9, 50px);
+    grid-template-rows: repeat(9, 50px);
+    border: 1px solid rgb(85, 85, 85);
+}
+
+.casilla {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    border: 1px solid #000;
+}
+
+.contenedor-numeros {
+    display: flex;
+    margin-top: 30px;
+}
+
+.numero {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #24242486;
+    cursor: pointer;
+}
+
+.numero-seleccionado {
+    background: #71ac76;
+}
