@@ -11,7 +11,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(45deg,#8FFF00,#FFC300,#FF5733,#C70039); 
+    background: linear-gradient(45deg,#3336ff,#c700a6); 
     background-size: 400%;
     animation: animacion-fondo 35s ease-in forwards infinite;
 }
@@ -21,7 +21,7 @@ body:after {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #000000a9;
+    background: #00000073;
 }
 
 .app {
@@ -45,6 +45,7 @@ body:after {
     display: grid;
     grid-template-columns: repeat(9, 50px);
     grid-template-rows: repeat(9, 50px);
+    border-radius: 10px;
 }
 
 
@@ -55,19 +56,31 @@ body:after {
     font-size: 1.5rem;
     background: #000000a9;
     color: #FFF;
-    border: .1px solid #ffffff05;
+    border: .1px solid #ffffff65;
+    cursor: pointer;
 }
 
 .casilla:hover {
     background: #57575775;
 }
 
+.casilla-correcta {
+    color: #FFF;
+    background: #802af05d;
+}
+
+.casilla-seleccionada {
+    
+    background: #ffffffb0;
+    color: #000;
+}
+
 .borde-derecha {
-    border-right: 3px solid #FFF;
+    border-right: 5px solid #FFF;
 }
 
 .borde-abajo {
-    border-bottom: 3px solid #FFF;
+    border-bottom: 5px solid #FFF;
 }
 
 .contenedor-numeros {
@@ -85,10 +98,11 @@ body:after {
     background: #111111c0;
     color: #FFF;
     cursor: pointer;
+    border-radius: 10px;
 }
 
 .numero-seleccionado {
-    background: #71ac76;
+    background: #743ddb83;
 }
 
 @keyframes animacion-fondo {

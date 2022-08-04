@@ -9,6 +9,8 @@ const errores = document.querySelector('.errores');
 let numero = '';
 let numeroSeleccionado;
 let error = 0;
+let numeroMarcadoAnterior = ' ';;
+let marcado = false;
 
 
 let board = [
@@ -75,7 +77,6 @@ const pintarBorde = () => {
         let ids = casilla.id
         let id1 = parseInt(ids.charAt(0));
         let id2 = parseInt(ids.charAt(1));
-        console.log(id2)
         if(id1 === 2 || id1 === 5) {
             casilla.classList.add('borde-abajo');
         }
@@ -85,20 +86,63 @@ const pintarBorde = () => {
     }
 }
 
+const pintarCorrectos = () => {
+    const casillas = document.querySelectorAll('.casilla');
+    for(let casilla of casillas) {
+        let ids = casilla.id;
+        let id1 = parseInt(ids.charAt(0));
+        let id2 = parseInt(ids.charAt(1));
+        casilla.innerHTML !== solution[id1].charAt(id2) ? error=0 : casilla.classList.add('casilla-correcta');                    
+    }
+}
+
 const comprobarError = (casilla) => {
     let ids = casilla.id;
     let id1 = parseInt(ids.charAt(0));
     let id2 = parseInt(ids.charAt(1));
 
-    casilla.innerHTML !== solution[id1].charAt(id2) ? error++ : console.log('correcto');                    
+    casilla.innerHTML !== solution[id1].charAt(id2) ? error++ : casilla.classList.add('casilla-correcta');                    
+}
+
+const marcarNumeros = (casilla) => {
+    const casillas = document.querySelectorAll('.casilla');
+    if(casilla.classList[0] === 'casilla' && casilla.innerHTML !== ' ') {
+        let numeroMarcado = casilla.innerHTML;
+        
+        if(numeroMarcadoAnterior !== ' ') {
+            if(numeroMarcadoAnterior !== numeroMarcado) {
+                for(let item of casillas) {
+                
+                    if(item.innerHTML === numeroMarcadoAnterior) {
+                        if(marcado === true) {
+                            item.classList.remove('casilla-seleccionada');                    
+                        }
+                    }
+                }
+            }
+            marcado = false;
+        }
+
+        numeroMarcadoAnterior = numeroMarcado
+
+        for(let item of casillas) {
+            
+            if(item.innerHTML === numeroMarcado) {
+                if(marcado === false) {
+                    item.classList.toggle('casilla-seleccionada');                    
+                }
+            }
+        }
+        marcado = true;
+    }
 }
 
 const clickCasilla = () => {
     tablero.addEventListener('click', (e)=> {
         let casilla = e.target 
-        console.log(numeroSeleccionado)
-        if(casilla.classList.value === 'casilla' && numeroSeleccionado !== undefined) {
-            if(casilla.innerHTML === ' ') {
+        marcarNumeros(casilla)
+        if(casilla.classList[0] === 'casilla' && numeroSeleccionado !== undefined) {
+            if(casilla.innerHTML == ' ') {
                 casilla.innerHTML = numeroSeleccionado;
             }
             comprobarError(casilla);
@@ -111,13 +155,20 @@ const clickCasilla = () => {
 const seleccionarNumeros = () => {
     contNumeros.addEventListener('click', (e)=>{
     
-        if(e.target.classList.value === 'numero') {
+        if(e.target.classList[0] === 'numero') {
+            
             if(numero !== '') {
-                numero.classList.remove('numero-seleccionado');
+                if(numero.id !== e.target.id) {
+                    numero.classList.remove('numero-seleccionado');
+                }
             }
-            numero = e.target
-            numeroSeleccionado = numero.innerHTML;
-            numero.classList.add('numero-seleccionado');
+            numero = e.target            
+            numero.classList.toggle('numero-seleccionado');
+            if(numero.classList[1] === 'numero-seleccionado') {
+                numeroSeleccionado = numero.innerHTML;
+            } else {
+                numeroSeleccionado = ' ';
+            }
         }
     })
 }
@@ -136,6 +187,7 @@ const god = () => {
         }
     }
     pintarBorde()
+    pintarCorrectos()
     clickCasilla()    
 }
 
