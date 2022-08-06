@@ -15,7 +15,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(45deg,#ffcf33,#2400c7); 
+    background: linear-gradient(45deg,#ff6d33,#2400c7); 
     background-size: 300%;
     animation: animacion-fondo 35s ease-in forwards infinite;
 }
