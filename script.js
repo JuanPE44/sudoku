@@ -8,8 +8,9 @@ const errores = document.querySelector('.errores');
 
 let borrar = false;
 let numero = '';
-let numeroSeleccionado;
+let numeroSeleccionado = ' ';
 let error = 0;
+let casillasMarcadas;
 let numeroMarcadoAnterior = ' ';;
 let marcado = false;
 
@@ -108,8 +109,6 @@ const comprobarError = (casilla) => {
     let id1 = parseInt(ids.charAt(0));
     let id2 = parseInt(ids.charAt(1));
     
-    console.log(casillaVacia(casilla))
-    
     if(casillaVacia(casilla) === true) {
         if(casilla.innerHTML !== solution[id1].charAt(id2)) {
             casilla.classList.add('casilla-incorrecta');  
@@ -142,6 +141,8 @@ const borrarCasilla = (casilla) => {
         casilla.innerHTML = ' ';
         casilla.classList.remove('casilla-incorrecta');
     }
+    btnBorrar.classList.remove('borrar-seleccionado');
+    borrar = false;
 }
 
 // al clickear un numero te muestra todos los que hay en el tablero
@@ -151,6 +152,7 @@ const marcarNumeros = (casilla) => {
     
     if(casilla.classList[0] === 'casilla' && casilla.innerHTML !== ' ' && borrar !== true) {
         let numeroMarcado = casilla.innerHTML;
+        
         
         if(numeroMarcadoAnterior !== ' ' ) {
             if(numeroMarcadoAnterior !== numeroMarcado) {
@@ -177,16 +179,37 @@ const marcarNumeros = (casilla) => {
             }
         }
         marcado = true;
+        desmarcarCasillas(casilla)
     }
+}
+
+const desmarcarNumero = () => {
+    const seleccionado = document.querySelector('.numero-seleccionado');
+    if(seleccionado !== null) {
+        seleccionado.classList.remove('numero-seleccionado');
+        numeroSeleccionado = ' ';  
+    }
+    
+}
+
+const desmarcarCasillas = (casilla) => {
+    const casillasSeleccionadas = document.querySelectorAll('.casilla-seleccionada');
+    casilla.innerHTML;
+    if(casilla.innerHTML === casillasMarcadas) {
+        console.log('entro')
+    }
+
 }
 
 const clickCasilla = () => {
     tablero.addEventListener('click', (e)=> {
         let casilla = e.target 
         marcarNumeros(casilla)
-        if(casilla.classList[0] === 'casilla' && numeroSeleccionado !== undefined && borrar !== true) {
+        desmarcarCasillas(casilla)
+        if(casilla.classList[0] === 'casilla' && numeroSeleccionado !== ' ' && borrar !== true) {
             if(casilla.innerHTML == ' ') {
                 casilla.innerHTML = numeroSeleccionado;
+                desmarcarNumero();
             }
             comprobarError(casilla);
             errores.innerHTML = 'Errores: '+error;
