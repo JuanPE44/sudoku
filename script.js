@@ -1,11 +1,12 @@
 
 // variables globales
 
+const btnBorrar = document.querySelector('.btn-borrar');
 const tablero = document.querySelector('.tablero');
 const contNumeros = document.querySelector('.contenedor-numeros');
 const errores = document.querySelector('.errores');
 
-
+let borrar = false;
 let numero = '';
 let numeroSeleccionado;
 let error = 0;
@@ -55,13 +56,12 @@ for (let i=0;i<9;i++) {
 		m[i][j] = board[i].charAt(j);
 	}
 }
-
-
-
 console.log(m)
 
-
 // funciones
+
+
+// crea las casillas y las agrega al tablero
 
 const crearCasilla = (id1,id2,num) => {
     const div = document.createElement('div');
@@ -71,20 +71,23 @@ const crearCasilla = (id1,id2,num) => {
     tablero.appendChild(div);
 }
 
+
+// pinta los bordes de adentro para separar los 9 cuadrados
+
 const pintarBorde = () => {
     const casillas = document.querySelectorAll('.casilla');
     for(let casilla of casillas) {
         let ids = casilla.id
         let id1 = parseInt(ids.charAt(0));
         let id2 = parseInt(ids.charAt(1));
-        if(id1 === 2 || id1 === 5) {
-            casilla.classList.add('borde-abajo');
-        }
-        if(id2 === 2 || id2 === 5) {
-            casilla.classList.add('borde-derecha');
-        }
+
+        if(id1 === 2 || id1 === 5) {casilla.classList.add('borde-abajo');}
+        if(id2 === 2 || id2 === 5) {casilla.classList.add('borde-derecha');}
     }
 }
+
+
+// pinta el fondo de las casillas que por defecto ya son correctas
 
 const pintarCorrectos = () => {
     const casillas = document.querySelectorAll('.casilla');
@@ -92,24 +95,64 @@ const pintarCorrectos = () => {
         let ids = casilla.id;
         let id1 = parseInt(ids.charAt(0));
         let id2 = parseInt(ids.charAt(1));
-        casilla.innerHTML !== solution[id1].charAt(id2) ? error=0 : casilla.classList.add('casilla-correcta');                    
+        casilla.innerHTML !== solution[id1].charAt(id2) ? error=0 : casilla.classList.add('casilla-defecto');                    
     }
 }
+
+
+
+// si el numero ingresado es incorrecto de incrementa la variable error
 
 const comprobarError = (casilla) => {
     let ids = casilla.id;
     let id1 = parseInt(ids.charAt(0));
     let id2 = parseInt(ids.charAt(1));
-
-    casilla.innerHTML !== solution[id1].charAt(id2) ? error++ : casilla.classList.add('casilla-correcta');                    
+    
+    console.log(casillaVacia(casilla))
+    
+    if(casillaVacia(casilla) === true) {
+        if(casilla.innerHTML !== solution[id1].charAt(id2)) {
+            casilla.classList.add('casilla-incorrecta');  
+            error++;
+        } else {
+            casilla.classList.add('casilla-correcta');  
+        }
+    }
+    
+                      
 }
+
+
+// comprueba si la casilla no tienen ninguna clase es decir, esta completamente vacio
+
+const casillaVacia = (casilla) => {
+    let bool = true;
+    casilla.classList.forEach(clase => {
+        if(clase === 'casilla-defecto' || clase === 'casilla-correcta' || clase === 'casilla-incorrecta') {
+            bool = false;
+        }
+    })
+    return bool;
+}
+
+const borrarCasilla = (casilla) => {
+    let casillaIncorrecta = false;
+    casilla.classList.forEach(clase => {clase === 'casilla-incorrecta' ? casillaIncorrecta = true : console.log()});
+    if(casillaIncorrecta === true) {
+        casilla.innerHTML = ' ';
+        casilla.classList.remove('casilla-incorrecta');
+    }
+}
+
+// al clickear un numero te muestra todos los que hay en el tablero
 
 const marcarNumeros = (casilla) => {
     const casillas = document.querySelectorAll('.casilla');
-    if(casilla.classList[0] === 'casilla' && casilla.innerHTML !== ' ') {
+    
+    if(casilla.classList[0] === 'casilla' && casilla.innerHTML !== ' ' && borrar !== true) {
         let numeroMarcado = casilla.innerHTML;
         
-        if(numeroMarcadoAnterior !== ' ') {
+        if(numeroMarcadoAnterior !== ' ' ) {
             if(numeroMarcadoAnterior !== numeroMarcado) {
                 for(let item of casillas) {
                 
@@ -141,16 +184,24 @@ const clickCasilla = () => {
     tablero.addEventListener('click', (e)=> {
         let casilla = e.target 
         marcarNumeros(casilla)
-        if(casilla.classList[0] === 'casilla' && numeroSeleccionado !== undefined) {
+        if(casilla.classList[0] === 'casilla' && numeroSeleccionado !== undefined && borrar !== true) {
             if(casilla.innerHTML == ' ') {
                 casilla.innerHTML = numeroSeleccionado;
             }
             comprobarError(casilla);
             errores.innerHTML = 'Errores: '+error;
+        }
+        if(borrar === true) {
+            borrarCasilla(casilla);
         }	    
     })
 }
-
+const botonBorrar = () => {
+    btnBorrar.addEventListener('click', (e)=>{
+        borrar === false ? borrar = true : borrar = false;
+        borrar === true ? btnBorrar.classList.add('borrar-seleccionado') : btnBorrar.classList.remove('borrar-seleccionado');
+    }) 
+}
 
 const seleccionarNumeros = () => {
     contNumeros.addEventListener('click', (e)=>{
@@ -176,7 +227,7 @@ const seleccionarNumeros = () => {
 
 
 const god = () => {
-    
+    botonBorrar()
     seleccionarNumeros()
     
     for(let i=0;i<9;i++) {

@@ -11,7 +11,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(45deg,#3336ff,#c700a6); 
+    background: linear-gradient(45deg,#7033ff,#007ec7); 
     background-size: 400%;
     animation: animacion-fondo 35s ease-in forwards infinite;
 }
@@ -33,6 +33,22 @@ body:after {
 .informacion {
     width: 100%;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-borrar {
+    padding: 5px 10px;
+    font-size: 1rem;
+    background: #0000009a;
+    color: #FFF;
+    cursor: pointer;
+}
+
+.borrar-seleccionado {
+    background: #e24a4a;
 }
 
 .errores {
@@ -45,7 +61,7 @@ body:after {
     display: grid;
     grid-template-columns: repeat(9, 50px);
     grid-template-rows: repeat(9, 50px);
-    border-radius: 10px;
+
 }
 
 
@@ -61,18 +77,24 @@ body:after {
 }
 
 .casilla:hover {
-    background: #57575775;
+   
+}
+
+.casilla-defecto {
+    background: #2af0b55d;
+    
 }
 
 .casilla-correcta {
-    color: #FFF;
     background: #802af05d;
 }
 
+.casilla-incorrecta {
+    background: #f02a2a5d;
+}
+
 .casilla-seleccionada {
-    
-    background: #ffffffb0;
-    color: #000;
+    background: #8c00ffb0;
 }
 
 .borde-derecha {
