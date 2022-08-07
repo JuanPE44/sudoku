@@ -144,3 +144,9 @@ body:after {
 	100%{background-position: left;}
 }
 
+@media screen and (max-width: 500px) {
+    .app {
+        transform: scale(.8);
+    }
+}
+

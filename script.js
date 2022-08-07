@@ -139,7 +139,7 @@ const botonBorrar = () => {
 // si la casilla es incorrecta y borrar es true al hacer click se borra la casilla
 
 const borrarCasilla = (casilla) => {    
-    if(casilla.classList.contains('casilla-incorrecta')) {
+    if(casilla.classList.contains('casilla-incorrecta') && !casilla.classList.contains('casilla-seleccionada')) {
         casilla.innerHTML = ' ';
         casilla.classList.remove('casilla-incorrecta');
     }
