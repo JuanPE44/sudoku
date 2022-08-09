@@ -46,24 +46,17 @@ let solution = [
 
 // se crea la matriz m de tres dimensiones
 
-let m = []
+let matrizTablero = []
 for (let i = 0; i < 9; i++) {
-	m[i] = [];	
+	matrizTablero[i] = [];	
 }
 
-// se rellena la matriz 
-
-for (let i=0;i<9;i++) {
-	for (let j=0;j<9;j++) {
-		m[i][j] = board[i].charAt(j);
-	}
-}
-console.log(m)
 
 // funciones
 
 
 // crea las casillas y las agrega al tablero
+
 
 const crearCasilla = (id1,id2,num) => {
     const div = document.createElement('div');
@@ -153,9 +146,15 @@ const borrarCasilla = (casilla) => {
 
 const clickCasilla = () => {
     tablero.addEventListener('click', (e)=> {
-        let casilla = e.target 
+        let casilla = e.target         
+        
+
         
         marcarCasillas(casilla);
+
+        if(casilla.innerHTML === ' ' && numeroSeleccionado === ' ') {
+            marcarCasillasFaltantes(casilla);
+        }
         
         if(casilla.classList.contains('casilla') && numeroSeleccionado !== ' ' && borrar !== true) {
             if(casilla.innerHTML == ' ') {
@@ -168,8 +167,21 @@ const clickCasilla = () => {
         if(borrar === true) {
             borrarCasilla(casilla);
         }	
-        numeroCompleto();    
+        numeroCompleto();   
+        rellenarMatriz() 
     })
+}
+
+const rellenarMatriz = () => {
+    const casillas = document.querySelectorAll('.casilla');
+    casillas.forEach(casilla=>{
+        let ids = casilla.id;
+        let id1 = parseInt(ids.charAt(0));
+        let id2 = parseInt(ids.charAt(1));
+        matrizTablero[id1][id2] = casilla.innerHTML;
+        
+    })
+    
 }
 
 
@@ -211,6 +223,22 @@ const marcarCasillas = (casilla) => {
             }
         }  
         numeroMarcadoAnterior = numeroMarcado
+    }
+}
+
+
+const marcarCasillasFaltantes = (casilla) => {
+    const casillas = document.querySelectorAll('.casilla');
+    let ids = casilla.id;
+    let id1 = parseInt(ids.charAt(0));
+    let id2 = parseInt(ids.charAt(1));
+    console.log(ids)
+    casillas.forEach(item=>{
+
+    })
+    
+    for(let i=0;i<9;i++) {
+        
     }
 }
 
@@ -324,14 +352,14 @@ const eliminarNumero = (numero) => {
 // funcion principal que ejecuta todo
 
 const god = () => {
+
     botonBorrar()
     seleccionarNumeros()
     
     for(let i=0;i<9;i++) {
         for(let j=0;j<9;j++) {
-            num = m[i][j]
+            num = board[i].charAt(j);
             crearCasilla(i,j,num);
-
         }
     }
     pintarBorde()
