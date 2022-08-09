@@ -158,14 +158,17 @@ const borrarCasilla = (casilla) => {
 }
 
 const desmarcarCasillasFaltantes = (casilla) => {
-    let ids = casilla.id;
-    let id1 = parseInt(ids.charAt(0));
-    let id2 = parseInt(ids.charAt(1));
-    for(let i=0;i<9;i++) {
-        matrizTablero[id1][i].classList.remove('casillaVacia-seleccionada');
-        matrizTablero[i][id2].classList.remove('casillaVacia-seleccionada');
-    }  
-    despintarCuadrado(arrayIds[0],arrayIds[1],arrayIds[2],arrayIds[3])
+
+    if(marcadoAnterior !== ' ') {
+        let id1 = parseInt(marcadoAnterior.charAt(0));
+        let id2 = parseInt(marcadoAnterior.charAt(1));
+        for(let i=0;i<9;i++) {
+            console.log('entro')
+            matrizTablero[id1][i].classList.remove('casillaVacia-seleccionada');
+            matrizTablero[i][id2].classList.remove('casillaVacia-seleccionada');
+        }  
+        despintarCuadrado(arrayIds[0],arrayIds[1],arrayIds[2],arrayIds[3])
+    }
 }
 
 
@@ -175,7 +178,6 @@ const clickCasilla = () => {
     tablero.addEventListener('click', (e)=> {
         let casilla = e.target         
         
-         
         
         desmarcarCasillasFaltantes(casilla)
         marcarCasillasFaltantes(casilla);
@@ -257,6 +259,10 @@ const marcarCasillasFaltantes = (casilla) => {
     let ids = casilla.id;
     let id1 = parseInt(ids.charAt(0));
     let id2 = parseInt(ids.charAt(1));
+    for(let i=0;i<9;i++) {
+        matrizTablero[id1][i].classList.remove('casillaVacia-seleccionada');
+        matrizTablero[i][id2].classList.remove('casillaVacia-seleccionada');
+    } 
     
     if(casilla.innerHTML === ' ' && borrar !== true && numeroSeleccionado === ' ')  {
         let marcadoActual = casilla.id;
