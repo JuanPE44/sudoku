@@ -175,10 +175,12 @@ const clickCasilla = () => {
     tablero.addEventListener('click', (e)=> {
         let casilla = e.target         
         
-        marcarCasillas(casilla);  
+         
+        
         desmarcarCasillasFaltantes(casilla)
         marcarCasillasFaltantes(casilla);
-           
+        marcarCasillas(casilla); 
+        
         if(casilla.classList.contains('casilla') && numeroSeleccionado !== ' ' && borrar !== true) {
             if(casilla.innerHTML == ' ') {
                 casilla.innerHTML = numeroSeleccionado;
