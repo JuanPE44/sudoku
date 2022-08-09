@@ -104,6 +104,10 @@ body:after {
     background: #0cc28b98;
 }
 
+.casillaVacia-seleccionada {
+    background: #4f54669a;
+}
+
 .borde-derecha {
     border-right: 3px solid #FFF;
 }
