@@ -1,8 +1,5 @@
 
 
-
-const t = new Tablero();
-
 class Caja {
     constructor(clase,id) {
         this.filas = 3;
@@ -44,24 +41,5 @@ class Caja {
     }
 }
 
-class Cajita extends Caja {
-    constructor(clase,id) {
-        super(clase,id);
-    }
 
-    crearCajita() {
-        const cajita = document.createElement('div');
-        cajita.classList.add(this.clase);
-        cajita.id = this.id;
-        cajita.addEventListener('click',()=> {
-            this.clickCajita();
-        });
-        return cajita;
-    }
 
-    clickCajita() {
-        console.log(this.id);
-    }
-}
-
-t.rellenarTablero();

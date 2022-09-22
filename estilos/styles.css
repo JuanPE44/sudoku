@@ -42,5 +42,22 @@ html body {
   background: #fff;
   font-size: 2.5rem;
 }
+.contenedor-tablero .tablero .actual {
+  background: #bbdefb;
+}
+.contenedor-tablero .contenedor-numeros {
+  width: 100%;
+  display: flex;
+}
+.contenedor-tablero .contenedor-numeros button {
+  margin-top: 1rem;
+  flex-grow: 1;
+  font-size: 5rem;
+  color: #0072e3;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
 
 /*# sourceMappingURL=styles.css.map */

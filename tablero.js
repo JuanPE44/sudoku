@@ -1,8 +1,9 @@
 class Tablero {
     constructor() {
         this.filas = 3;
-        this.columnas = 3;
+        this.columnas = 3;        
         this.cajas = [];
+        this.cajaActual;
         this.tablero = [
             "  74916 5",
             "2   6 3 9",
@@ -53,8 +54,7 @@ class Tablero {
         this.escribirTablero();
     }
 
-    escribirTablero() {
-       
+    escribirTablero() {       
         let i=0;
         let j=0;
         for(let a=0;a<3;a++) {
@@ -72,4 +72,21 @@ class Tablero {
             }
         }
     }
+
+    despintarActual() {
+        if(this.cajaActual !== undefined) {
+            this.cajaActual.elemento.classList.remove('actual');
+            this.cajaActual.actual = true;
+        }
+    }
+
+    pintarActual() {
+        this.cajaActual.elemento.classList.add('actual');
+        this.cajaActual.actual = true;
+    }
+
+    comprobarNumero() {
+        
+    }
 }
+

@@ -38,6 +38,8 @@ html {
             cursor: pointer;
         }
 
+        
+
         .cajita {                       
             display: flex;
             justify-content: center;
@@ -45,6 +47,26 @@ html {
             background: #fff;
             font-size: 2.5rem;
             
+        }
+
+        .actual {
+            background: #bbdefb;
+        }
+    }
+    
+    .contenedor-numeros {
+        width: 100%;
+        display: flex;
+
+        button {
+            margin-top: 1rem;
+            flex-grow: 1;
+            font-size: 5rem;           
+            color: #0072e3;
+            background: transparent;
+            border: none;
+            outline: none;
+            cursor: pointer;
         }
     }
 }
