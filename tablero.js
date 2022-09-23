@@ -3,6 +3,8 @@ class Tablero {
         this.filas = 3;
         this.columnas = 3;        
         this.cajas = [];
+        this.cajasCorrectas = [];
+        this.cajitaActual;
         this.cajaActual;
         this.tablero = [
             "  74916 5",
@@ -29,12 +31,18 @@ class Tablero {
     }
 
     arrayCajas() {
-        let cajas = []
+        let cajas = [];
+        let cajasCorrectas = [];
         for (let i=0;i<this.filas;i++) {
-            cajas[i] = [];	
+            cajas[i] = [];
+            cajasCorrectas[i] = [];	
+
         }
+
+        this.cajasCorrectas = cajasCorrectas;
         return cajas;
     }
+
 
     rellenarTablero() {
         const divTablero = document.getElementById('tablero');
@@ -46,6 +54,7 @@ class Tablero {
                 
                 C.rellenarCaja();
                 cajas[i][j] = C.caja;
+                this.cajasCorrectas[i][j] = C.caja;
                 divTablero.appendChild(caja);
             }
         }
@@ -62,6 +71,7 @@ class Tablero {
                 for(let c=0;c<3;c++) {                    
                     for(let d=0;d<3;d++) {            
                         this.cajas[a][c][b][d].innerHTML = this.tablero[i][j];
+                        this.cajasCorrectas[a][c][b][d] = this.tableroSolucion[i][j];
                         j++;
                         if(j==9) {
                             i++;
@@ -71,22 +81,27 @@ class Tablero {
                 }
             }
         }
+        console.log(this.cajasCorrectas[2][0][0][0]);
     }
 
     despintarActual() {
-        if(this.cajaActual !== undefined) {
-            this.cajaActual.elemento.classList.remove('actual');
-            this.cajaActual.actual = true;
+        if(this.cajitaActual !== undefined) {
+            this.cajitaActual.elemento.classList.remove('actual');
+            this.cajitaActual.actual = true;
         }
     }
 
     pintarActual() {
-        this.cajaActual.elemento.classList.add('actual');
-        this.cajaActual.actual = true;
+        this.cajitaActual.elemento.classList.add('actual');
+        this.cajitaActual.actual = true;
     }
 
-    comprobarNumero() {
+    compararNumero(numero) {
+        let id1 = this.cajaActual.id;
+        let id2 = this.cajitaActual.id;
+        let actual = this.cajitaActual.elemento;
         
+        numero === this.cajasCorrectas[id1[0]][id1[1]][id2[0]][id2[1]] ? actual.classList.add('correcto') : actual.classList.add('incorrecto');          
     }
 }
 

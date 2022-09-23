@@ -7,6 +7,7 @@ class Caja {
         this.clase = clase;
         this.id = id;
         this.caja = [];
+        this.elemento;
     }
 
     arrayCaja() {
@@ -21,7 +22,11 @@ class Caja {
         const caja = document.createElement('div');
         caja.classList.add(this.clase);
         caja.id = this.id;
+        caja.addEventListener('click',()=>{
+            this.clickCaja();
+        })
         this.caja = caja;
+        this.elemento = caja;
         return caja;
     }
 
@@ -38,6 +43,11 @@ class Caja {
         }
         this.caja = caja;
         
+    }
+
+    clickCaja() {
+        t.cajaActual = this.elemento;
+    
     }
 }
 

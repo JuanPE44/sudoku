@@ -17,17 +17,23 @@ html body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
-.contenedor-tablero .tablero {
+.contenedor-app {
+  display: flex;
+  align-items: center;
+}
+.contenedor-app .tablero {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 2px;
   background: #344861;
   border: 2px solid #344861;
+  margin: 1rem;
 }
-.contenedor-tablero .tablero .caja {
+.contenedor-app .tablero .caja {
   display: grid;
   grid-template-columns: repeat(3, 50px);
   grid-template-rows: repeat(3, 50px);
@@ -35,21 +41,48 @@ html body {
   background: #bfc6d4;
   cursor: pointer;
 }
-.contenedor-tablero .tablero .cajita {
+.contenedor-app .tablero .caja .cajita {
   display: flex;
   justify-content: center;
   align-items: center;
   background: #fff;
   font-size: 2.5rem;
 }
-.contenedor-tablero .tablero .actual {
+.contenedor-app .tablero .caja .actual {
   background: #bbdefb;
 }
-.contenedor-tablero .contenedor-numeros {
+.contenedor-app .tablero .caja .correcto {
+  background: #bbdefb;
+  color: #0072e3;
+}
+.contenedor-app .tablero .caja .incorrecto {
+  background: #f7cfd6;
+  color: #e55c6c;
+}
+.contenedor-app nav {
+  margin: 1rem;
+}
+.contenedor-app nav .contenedor-botones {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.contenedor-app nav .contenedor-botones button {
+  padding: 2rem;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  background: #eaeef4;
+  border: none;
+  outline: none;
+}
+.contenedor-app nav .contenedor-numeros {
   width: 100%;
   display: flex;
 }
-.contenedor-tablero .contenedor-numeros button {
+.contenedor-app nav .contenedor-numeros button {
   margin-top: 1rem;
   flex-grow: 1;
   font-size: 5rem;
@@ -58,6 +91,17 @@ html body {
   border: none;
   outline: none;
   cursor: pointer;
+}
+
+@media screen and (max-width: 900px) {
+  .contenedor-app {
+    flex-direction: column;
+  }
+  .contenedor-app .contenedor-numeros {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */
