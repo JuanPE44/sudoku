@@ -23,7 +23,6 @@ html {
 
 .contenedor-app {
     display: flex;
-    align-items: center;
     .tablero {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -31,7 +30,6 @@ html {
         gap: 2px;
         background: #344861;
         border: 2px solid #344861;
-        margin: 1rem;
 
         .caja {
             display: grid;
@@ -50,9 +48,7 @@ html {
                 
             }
     
-            .actual {
-                background: #bbdefb;
-            }
+            
 
             .correcto {
                 background: #bbdefb;
@@ -63,6 +59,14 @@ html {
                 background: #f7cfd6;
                 color: #e55c6c;
             }
+
+            .actuales {
+                background: #c3d7ea;
+            }
+
+            .actual {
+                background: #bbdefb;
+            }
         }
 
         
@@ -71,15 +75,33 @@ html {
     }      
     
     nav {
-        margin: 1rem;
-    
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-left: 1.4rem;
+
+        .contenedor-titulo { 
+            display: flex;
+            justify-content: center;
+            align-items: center;                       
+            flex-grow: 2;
+            h1 {                
+                font-size: 4rem;
+                font-weight: 300;
+                letter-spacing: 10px;
+                text-align: center;
+            }
+        }
         .contenedor-botones {
             width: 100%;
+            flex-grow: 1;
             display: flex;    
-            justify-content: space-around;    
+            justify-content: space-around;
+            align-items: center;    
     
             button {
-                padding: 2rem;
+                width: 5rem;
+                height: 5rem;              
                 border-radius: 50%;
                 -webkit-border-radius: 50%;
                 -moz-border-radius: 50%;
@@ -88,36 +110,51 @@ html {
                 background: #eaeef4;
                 border: none;
                 outline: none;
+                cursor: pointer;
+
+                &:hover {
+                    background: #dce3ed;
+                }
+
+                i {
+                    font-size: 2rem;
+                    color: #0072e3;
+                }
             }
         }
     
         .contenedor-numeros {
             width: 100%;
-            display: flex;
+            flex-grow: 1;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-template-rows: repeat(3,1fr);
+            gap: 7px;
     
             button {
-                margin-top: 1rem;
+                padding: 1rem 2.5rem;
                 flex-grow: 1;
-                font-size: 5rem;           
+                font-size: 6rem;           
                 color: #0072e3;
-                background: transparent;
+                background: #eaeef4;
+                border-radius: 5px;
                 border: none;
                 outline: none;
                 cursor: pointer;
+
+                &:hover {
+                    background: #dce3ed;
+                }
             }
         }
     }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (min-width: 800px) {
 
 	.contenedor-app {
-        flex-direction: column;
+       
 
-        .contenedor-numeros {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-columns: repeat(3, 1fr);
-        }
+        
     }
 }

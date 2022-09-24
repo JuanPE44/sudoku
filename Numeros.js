@@ -7,6 +7,7 @@ class Numeros {
     clickNumero() {
         this.numeros.forEach(numero => {
             numero.addEventListener('click', (e)=> {
+                console.log()
                 if(t.cajitaActual.marcado === false && t.cajitaActual.elemento.innerHTML === ' ') {
                     t.compararNumero(e.target.innerHTML)
                     t.cajitaActual.elemento.innerHTML = numero.innerHTML;

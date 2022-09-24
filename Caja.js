@@ -11,21 +11,20 @@ class Caja {
     }
 
     arrayCaja() {
-        let cajas = []
+        let caja = []
         for (let i=0;i<this.filas;i++) {
-            cajas[i] = [];	
+            caja[i] = [];	
         }
-        return cajas;
+        return caja;
     }
 
-    crearCaja() {
+    crearElementoCaja() {
         const caja = document.createElement('div');
         caja.classList.add(this.clase);
         caja.id = this.id;
         caja.addEventListener('click',()=>{
             this.clickCaja();
         })
-        this.caja = caja;
         this.elemento = caja;
         return caja;
     }
@@ -38,9 +37,10 @@ class Caja {
                 let c = new Cajita('cajita',i.toString()+j.toString());
                 let cajita = c.crearCajita();
                 caja[i][j] = cajita;
-                this.caja.appendChild(cajita);
+                this.elemento.appendChild(cajita);
             }
         }
+
         this.caja = caja;
         
     }

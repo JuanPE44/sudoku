@@ -22,7 +22,6 @@ html body {
 
 .contenedor-app {
   display: flex;
-  align-items: center;
 }
 .contenedor-app .tablero {
   display: grid;
@@ -31,7 +30,6 @@ html body {
   gap: 2px;
   background: #344861;
   border: 2px solid #344861;
-  margin: 1rem;
 }
 .contenedor-app .tablero .caja {
   display: grid;
@@ -48,9 +46,6 @@ html body {
   background: #fff;
   font-size: 2.5rem;
 }
-.contenedor-app .tablero .caja .actual {
-  background: #bbdefb;
-}
 .contenedor-app .tablero .caja .correcto {
   background: #bbdefb;
   color: #0072e3;
@@ -59,16 +54,40 @@ html body {
   background: #f7cfd6;
   color: #e55c6c;
 }
+.contenedor-app .tablero .caja .actuales {
+  background: #c3d7ea;
+}
+.contenedor-app .tablero .caja .actual {
+  background: #bbdefb;
+}
 .contenedor-app nav {
-  margin: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 1.4rem;
+}
+.contenedor-app nav .contenedor-titulo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 2;
+}
+.contenedor-app nav .contenedor-titulo h1 {
+  font-size: 4rem;
+  font-weight: 300;
+  letter-spacing: 10px;
+  text-align: center;
 }
 .contenedor-app nav .contenedor-botones {
   width: 100%;
+  flex-grow: 1;
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 .contenedor-app nav .contenedor-botones button {
-  padding: 2rem;
+  width: 5rem;
+  height: 5rem;
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -77,31 +96,36 @@ html body {
   background: #eaeef4;
   border: none;
   outline: none;
+  cursor: pointer;
+}
+.contenedor-app nav .contenedor-botones button:hover {
+  background: #dce3ed;
+}
+.contenedor-app nav .contenedor-botones button i {
+  font-size: 2rem;
+  color: #0072e3;
 }
 .contenedor-app nav .contenedor-numeros {
   width: 100%;
-  display: flex;
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 7px;
 }
 .contenedor-app nav .contenedor-numeros button {
-  margin-top: 1rem;
+  padding: 1rem 2.5rem;
   flex-grow: 1;
-  font-size: 5rem;
+  font-size: 6rem;
   color: #0072e3;
-  background: transparent;
+  background: #eaeef4;
+  border-radius: 5px;
   border: none;
   outline: none;
   cursor: pointer;
 }
-
-@media screen and (max-width: 900px) {
-  .contenedor-app {
-    flex-direction: column;
-  }
-  .contenedor-app .contenedor-numeros {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-columns: repeat(3, 1fr);
-  }
+.contenedor-app nav .contenedor-numeros button:hover {
+  background: #dce3ed;
 }
 
 /*# sourceMappingURL=styles.css.map */

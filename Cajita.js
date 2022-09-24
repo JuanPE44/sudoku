@@ -3,6 +3,7 @@ class Cajita extends Caja {
     constructor(clase,id) {
         super(clase,id);
         this.elemento;
+        this.error;
         this.marcado = false;
         this.actual = false;
     }
@@ -23,5 +24,6 @@ class Cajita extends Caja {
         t.despintarActual();
         t.cajitaActual = this;        
         t.pintarActual();
+       
     }
 }
