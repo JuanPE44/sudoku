@@ -22,6 +22,8 @@ html body {
 
 .contenedor-app {
   display: flex;
+  padding: 3rem;
+  box-shadow: 1px 1px 100px rgba(34, 34, 34, 0.7176470588);
 }
 .contenedor-app .tablero {
   display: grid;

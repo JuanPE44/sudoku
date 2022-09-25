@@ -23,6 +23,10 @@ html {
 
 .contenedor-app {
     display: flex;
+    padding: 3rem;
+
+    box-shadow: 1px 1px 100px #222222b7;
+
     .tablero {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -152,9 +156,5 @@ html {
 
 @media screen and (min-width: 800px) {
 
-	.contenedor-app {
-       
-
-        
-    }
+	
 }
