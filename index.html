@@ -15,17 +15,35 @@
     <script src="https://kit.fontawesome.com/56af8815be.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="contenedor-app">        
+    <div class="contenedor-app"> 
+        <div class="header">
+            <div>
+                <span class="tiempo">00:00</span>
+                <button class="tiempo-pausa"><i class="fa-solid fa-pause"></i></button>
+            </div>
+        </div>       
         <div class= "tablero" id="tablero"></div>    
         <nav>
             <div class="contenedor-titulo">
                 <h1>SUDOKU</h1>
             </div>
             <div class="contenedor-botones">
-                <button class="btn-retroceder"><i class="fa-solid fa-arrow-rotate-left"></i></button>
-                <button class="btn-borrar"><i class="fa-regular fa-trash-can"></i></button>
-                <button><i class="fa-regular fa-pen-to-square"></i></button>
-                <button><i class="fa-regular fa-lightbulb"></i></button>
+                <div class="boton">
+                    <button class="btn-retroceder"><i class="fa-solid fa-arrow-rotate-left"></i></button>
+                    <h5>Deshacer</h5>
+                </div>
+                <div class="boton">
+                    <button class="btn-borrar"><i class="fa-regular fa-trash-can"></i></button>
+                    <h5>Borrar</h5>
+                </div>
+                <div class="boton">
+                    <button><i class="fa-regular fa-pen-to-square"></i></button>
+                    <h5>Notas</h5>
+                </div>
+                <div class="boton">
+                    <button><i class="fa-regular fa-lightbulb"></i></button>
+                    <h5>Pista</h5>
+                </div>
             </div>            
             <div class="contenedor-numeros">
                 <button>1</button>

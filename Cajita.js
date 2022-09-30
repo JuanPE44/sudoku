@@ -24,6 +24,5 @@ class Cajita extends Caja {
         t.despintarActual();
         t.cajitaActual = this;        
         t.pintarActual();
-       
     }
 }

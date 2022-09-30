@@ -21,14 +21,48 @@ html body {
 }
 
 .contenedor-app {
-  display: flex;
+  display: grid;
+  grid-template-areas: "h h h" "t t n" "t t n";
   padding: 3rem;
-  box-shadow: 1px 1px 100px rgba(34, 34, 34, 0.7176470588);
+  border: 1px solid rgba(34, 34, 34, 0.1098039216);
+  box-shadow: 10px 10px 30px rgba(34, 34, 34, 0.1098039216);
+}
+.contenedor-app .header {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  padding: 1rem;
+  grid-area: h;
+}
+.contenedor-app .header .tiempo {
+  font-size: 1.5rem;
+  color: #94a3b7;
+}
+.contenedor-app .header .tiempo-pausa {
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  cursor: pointer;
+  background: #eaeef4;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+.contenedor-app .header .tiempo-pausa i {
+  font-size: 1.7rem;
+  color: #94a3b7;
+}
+.contenedor-app .header .tiempo-pausa:hover {
+  background: #dce3ed;
 }
 .contenedor-app .tablero {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
+  grid-area: t;
   gap: 2px;
   background: #344861;
   border: 2px solid #344861;
@@ -60,12 +94,13 @@ html body {
   background: #c3d7ea;
 }
 .contenedor-app .tablero .caja .actual {
-  background: #bbdefb;
+  background: #96c5ec;
 }
 .contenedor-app nav {
   width: 100%;
   display: flex;
   flex-direction: column;
+  grid-area: n;
   margin-left: 1.4rem;
 }
 .contenedor-app nav .contenedor-titulo {
@@ -87,7 +122,7 @@ html body {
   justify-content: space-around;
   align-items: center;
 }
-.contenedor-app nav .contenedor-botones button {
+.contenedor-app nav .contenedor-botones .boton button {
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
@@ -100,12 +135,19 @@ html body {
   outline: none;
   cursor: pointer;
 }
-.contenedor-app nav .contenedor-botones button:hover {
+.contenedor-app nav .contenedor-botones .boton button:hover {
   background: #dce3ed;
 }
-.contenedor-app nav .contenedor-botones button i {
+.contenedor-app nav .contenedor-botones .boton button i {
   font-size: 2rem;
   color: #0072e3;
+}
+.contenedor-app nav .contenedor-botones .boton h5 {
+  padding: 0.5rem;
+  text-align: center;
+  color: #0072e3;
+  font-size: 1.1rem;
+  font-weight: 100;
 }
 .contenedor-app nav .contenedor-numeros {
   width: 100%;

@@ -8,4 +8,5 @@ btnBorrar.seleccionarBoton()
 btnRetroceder.seleccionarBoton()
 
 t.rellenarTablero();
+t.tiempo();
 n.clickNumero();
