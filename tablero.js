@@ -234,12 +234,12 @@ class Tablero {
 
     despintarCajaActual() {
 
-        this.cajaActual.elemento.style.background = '';
+        //this.cajaActual.elemento.style.background = '';
     }
 
     pintarCajaActual() {
 
-        this.cajaActual.elemento.style.background = '#f00';
+        //this.cajaActual.elemento.style.background = '#f00';
     }
 
     compararNumero(numero) {
