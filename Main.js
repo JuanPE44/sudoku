@@ -4,9 +4,7 @@ const n = new Numeros();
 
 const btnBorrar = new Boton('.btn-borrar');
 const btnRetroceder = new Boton('.btn-retroceder');
-btnBorrar.seleccionarBoton()
-btnRetroceder.seleccionarBoton()
+
 
 t.rellenarTablero();
-t.tiempo();
-n.clickNumero();
+t.iniciarPartida();

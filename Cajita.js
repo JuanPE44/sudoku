@@ -20,9 +20,11 @@ class Cajita extends Caja {
     }
 
     clickCajita() {   
-        this.actual = true;     
-        t.despintarActual();
-        t.cajitaActual = this;        
-        t.pintarActual();
+        if(t.jugando === true) {
+            this.actual = true;     
+            t.despintarActual();
+            t.cajitaActual = this;        
+            t.pintarActual();
+        }
     }
 }

@@ -46,8 +46,9 @@ class Caja {
     }
 
     clickCaja() {
-        t.cajaActual = this.elemento;
-    
+        t.cajaActual = this; 
+        t.despintarCajaActual();    
+        t.pintarCajaActual();   
     }
 }
 

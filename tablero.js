@@ -67,12 +67,14 @@ const tableroSolucion = [
 class Tablero {
     constructor() {
         this.filas = 3;
-        this.columnas = 3;        
+        this.columnas = 3;
+        this.jugando = false;   
+        this.pausa = false;     
         this.cajas = [];
         this.cajasCorrectas = [];
         this.cajitaActual;
         this.cajaActual;
-        this.tablero = tablero[1];
+        this.tablero = [];
         this.tableroSolucion = tableroSolucion[1];
         this.historial = [];
     }
@@ -110,7 +112,71 @@ class Tablero {
         }
         this.cajas = cajas;
         this.cajasCorrectas = cajasCorrectas;
-        this.escribirTablero();
+        
+    }
+
+    iniciarPartida() {
+        const contenedorIniciar = document.querySelector('.contenedor-iniciar');
+        const iniciar = document.querySelector('.btn-iniciar');
+        iniciar.addEventListener('click', ()=> {
+            contenedorIniciar.style.display = 'none';
+            this.jugando = true;            
+            let numRandom = Math.floor(Math.random() * tablero.length);  
+            this.tablero = tablero[numRandom];
+            this.tableroSolucion = tableroSolucion[numRandom];
+            this.escribirTablero();
+            n.clickNumero();
+            btnBorrar.seleccionarBoton()
+            btnRetroceder.seleccionarBoton()
+            t.controlarTiempo();
+        })
+    }
+
+    controlarTiempo() {
+        let intervalo = setInterval(contador, 1000);
+        let seg = 0;
+        let min = 0;
+
+        function contador() {
+            seg++;            
+            if(seg===60) {
+                min++;
+                seg=0;
+            }
+            let ceroS, ceroM;
+            seg<10 ? ceroS = '0' : ceroS = '';
+            min<10 ? ceroM = '0' : ceroM = '';
+            document.querySelector('.tiempo').innerHTML = `${ceroM}${min}:${ceroS}${seg}`;
+        }
+        const botonPausar = document.querySelector('.tiempo-pausa');
+        botonPausar.innerHTML = '<i class="fa-solid fa-pause"></i>';        
+
+        botonPausar.addEventListener('click', ()=>{
+            const cajitas = document.querySelectorAll('.cajita');
+            
+            if(this.pausa === false) {
+                this.pausa = true;
+                this.jugando = false;
+                clearInterval(intervalo);
+                botonPausar.innerHTML = '<i class="fa-solid fa-play"></i>';
+                cajitas.forEach(e=> {
+                    e.style.color = '#fff'
+                    e.style.background = '#fff';
+                })
+                this.despintarActual();
+            } else {
+                this.pausa = false;
+                this.jugando = true;
+                intervalo = setInterval(contador, 1000);
+                botonPausar.innerHTML = '<i class="fa-solid fa-pause"></i>'
+                cajitas.forEach(e=> {
+                    e.style.color = ''
+                    e.style.background = '';
+                    this.pintarActual();
+                })
+            }
+        })
+        
     }
 
     escribirTablero() {       
@@ -121,7 +187,7 @@ class Tablero {
                 for(let c=0;c<3;c++) {                    
                     for(let d=0;d<3;d++) {                                
                         this.cajas[a][c][b][d].innerHTML = this.tablero[i][j];                        
-                        this.cajasCorrectas[a][c][b][d] = this.tableroSolucion[i][j];
+                        this.cajasCorrectas[a][c][b][d] = this.tableroSolucion[i][j];                        
                         j++;
                         if(j==9) {
                             i++;
@@ -149,8 +215,7 @@ class Tablero {
         }
     }
 
-    pintarActual() {
-        
+    pintarActual() {        
         this.cajitaActual.elemento.classList.add('actual');
         this.cajitaActual.actual = true;
         for(let a=0;a<3;a++) {
@@ -167,10 +232,15 @@ class Tablero {
         
     }
 
-    
+    despintarCajaActual() {
 
-   
-    
+        this.cajaActual.elemento.style.background = '';
+    }
+
+    pintarCajaActual() {
+
+        this.cajaActual.elemento.style.background = '#f00';
+    }
 
     compararNumero(numero) {
         let id1 = this.cajaActual.id;
@@ -179,9 +249,12 @@ class Tablero {
         if(numero === this.cajasCorrectas[id1[0]][id1[1]][id2[0]][id2[1]]) {
             actual.elemento.classList.add('correcto')
             actual.error = false;
+            t.cajitaActual.marcado = true;
         } else {
             actual.elemento.classList.add('incorrecto');
             actual.error = true;
+            this.despintarActual()
+            t.cajitaActual.marcado = false;
         }             
     }
 
@@ -196,8 +269,12 @@ class Tablero {
     }
 
     botonRetroceder() {
-        if(this.historial.length !== 0) {
-            let cajita = this.historial[this.historial.length-1];
+        let filtrado = t.historial.filter(e => e.elemento.classList.contains('incorrecto') || e.elemento.classList.contains('correcto'));
+        if(filtrado.length !== 0) {
+            
+           
+            console.log(filtrado)
+            let cajita = filtrado[filtrado.length-1];
             cajita.elemento.innerHTML = ' ';
             cajita.elemento.classList.remove('actual');
             cajita.elemento.classList.remove('actuales');
@@ -207,24 +284,6 @@ class Tablero {
             cajita.actual = false;
             this.historial.pop();
             t.despintarActual();
-        }
-    }
-    
-    tiempo() {
-        setInterval(contador, 1000);
-        let seg = 0;
-        let min = 0;
-
-        function contador() {
-            seg++;            
-            if(seg===60) {
-                min++;
-                seg=0;
-            }
-            let ceroS, ceroM;
-            seg<10 ? ceroS = '0' : ceroS = '';
-            min<10 ? ceroM = '0' : ceroM = '';
-            document.querySelector('.tiempo').innerHTML = `${ceroM}${min}:${ceroS}${seg}`;
         }
     }
 }
