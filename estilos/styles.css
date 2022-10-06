@@ -30,16 +30,18 @@ html body {
 .contenedor-app .header {
   width: 100%;
   display: flex;
-  flex-direction: row-reverse;
   justify-content: space-between;
   padding: 1rem;
   grid-area: h;
 }
-.contenedor-app .header .tiempo {
+.contenedor-app .header .errores {
+  font-size: 1.8rem;
+}
+.contenedor-app .header .contenedor-tiempo .tiempo {
   font-size: 1.5rem;
   color: #94a3b7;
 }
-.contenedor-app .header .tiempo-pausa {
+.contenedor-app .header .contenedor-tiempo .tiempo-pausa {
   width: 3rem;
   height: 3rem;
   border: none;
@@ -51,11 +53,11 @@ html body {
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
 }
-.contenedor-app .header .tiempo-pausa i {
+.contenedor-app .header .contenedor-tiempo .tiempo-pausa i {
   font-size: 1.7rem;
   color: #94a3b7;
 }
-.contenedor-app .header .tiempo-pausa:hover {
+.contenedor-app .header .contenedor-tiempo .tiempo-pausa:hover {
   background: #dce3ed;
 }
 .contenedor-app .tablero {
@@ -98,6 +100,10 @@ html body {
   -ms-transition: 0.2s;
   -o-transition: 0.2s;
 }
+.contenedor-app .tablero .contenedor-perder {
+  display: none;
+  position: absolute;
+}
 .contenedor-app .tablero .caja {
   display: grid;
   grid-template-columns: repeat(3, 50px);
@@ -112,6 +118,10 @@ html body {
   align-items: center;
   background: #fff;
   font-size: 2.5rem;
+}
+.contenedor-app .tablero .caja .circulo {
+  background: #f7cfd6;
+  transition: 1s;
 }
 .contenedor-app .tablero .caja .correcto {
   background: #bbdefb;
@@ -201,6 +211,44 @@ html body {
 }
 .contenedor-app nav .contenedor-numeros button:hover {
   background: #dce3ed;
+}
+
+@media screen and (max-width: 830px) {
+  .contenedor-app {
+    display: grid;
+    grid-template-areas: "h h h" "t t t" "n n n";
+    padding-top: 0;
+  }
+  .contenedor-app nav .contenedor-titulo {
+    display: none;
+  }
+  .contenedor-app nav .contenedor-botones {
+    padding-top: 1rem;
+  }
+  .contenedor-app nav .contenedor-numeros {
+    display: flex;
+  }
+  .contenedor-app nav .contenedor-numeros button {
+    padding: 0;
+    margin: 0;
+    font-size: 5rem;
+    background: transparent;
+  }
+}
+@media screen and (max-width: 530px) {
+  .contenedor-app {
+    transform: scale(0.9);
+  }
+}
+@media screen and (max-width: 460px) {
+  .contenedor-app {
+    transform: scale(0.7);
+  }
+}
+@media screen and (max-width: 360px) {
+  .contenedor-app {
+    transform: scale(0.5);
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

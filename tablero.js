@@ -69,7 +69,10 @@ class Tablero {
         this.filas = 3;
         this.columnas = 3;
         this.jugando = false;   
-        this.pausa = false;     
+        this.pausa = false; 
+        this.ganar = false;
+        this.perder = false;
+        this.errores = 0;    
         this.cajas = [];
         this.cajasCorrectas = [];
         this.cajitaActual;
@@ -86,9 +89,7 @@ class Tablero {
             cajas[i] = [];
             cajasCorrectas[i] = [];	
 
-        }
-
-        
+        }        
         return [cajas,cajasCorrectas];
     }
 
@@ -100,7 +101,7 @@ class Tablero {
         for(let i=0;i<this.filas;i++) {
             for(let j=0;j<this.columnas;j++) {
                 let C = new Caja('caja',i.toString()+j.toString());
-                let CCorrecta = new Caja()
+                let CCorrecta = new Caja();
                 let caja = C.crearElementoCaja();
                 let CajaCorrecta = CCorrecta.crearElementoCaja();
                 CCorrecta.rellenarCaja();
@@ -172,7 +173,9 @@ class Tablero {
                 cajitas.forEach(e=> {
                     e.style.color = ''
                     e.style.background = '';
-                    this.pintarActual();
+                    if(this.cajitaActual !== undefined) {
+                        this.pintarActual();
+                    }
                 })
             }
         })
@@ -185,14 +188,27 @@ class Tablero {
         for(let a=0;a<3;a++) {
             for(let b=0;b<3;b++) {
                 for(let c=0;c<3;c++) {                    
-                    for(let d=0;d<3;d++) {                                
-                        this.cajas[a][c][b][d].innerHTML = this.tablero[i][j];                        
-                        this.cajasCorrectas[a][c][b][d] = this.tableroSolucion[i][j];                        
-                        j++;
-                        if(j==9) {
-                            i++;
-                            j=0;
-                        }                                                                        
+                    for(let d=0;d<3;d++) { 
+                        /*                               
+                        setTimeout(()=>{
+                            setTimeout(()=> {
+                                setTimeout(()=>{
+                                    setTimeout(()=> {
+                                        */
+                                        this.cajas[a][c][b][d].innerHTML = this.tablero[i][j];                        
+                                        this.cajasCorrectas[a][c][b][d] = this.tableroSolucion[i][j];
+                                        j++;
+                                        if(j==9) {
+                                            i++;
+                                            j=0;
+                                        }
+                                        /*
+                                    },100 * d)                                     
+                                },100 *c)  
+                            },100 * b)                             
+                        },100 *a) 
+                        
+                        */
                     }
                 }
             }
@@ -255,7 +271,17 @@ class Tablero {
             actual.error = true;
             this.despintarActual()
             t.cajitaActual.marcado = false;
+            this.errores++;
         }             
+    }
+
+    perderPartida() {
+        const cajitas = document.querySelectorAll('.cajita');
+
+    }
+
+    ganarPartida() {
+
     }
 
     borrarError() {
@@ -271,9 +297,6 @@ class Tablero {
     botonRetroceder() {
         let filtrado = t.historial.filter(e => e.elemento.classList.contains('incorrecto') || e.elemento.classList.contains('correcto'));
         if(filtrado.length !== 0) {
-            
-           
-            console.log(filtrado)
             let cajita = filtrado[filtrado.length-1];
             cajita.elemento.innerHTML = ' ';
             cajita.elemento.classList.remove('actual');
