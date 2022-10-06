@@ -18,6 +18,7 @@ html body {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  background: #000;
 }
 
 .contenedor-app {
