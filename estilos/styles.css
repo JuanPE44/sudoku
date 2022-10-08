@@ -116,15 +116,14 @@ html body {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #344861;
   background: #fff;
   font-size: 2.5rem;
 }
-.contenedor-app .tablero .caja .circulo {
-  background: #f7cfd6;
-  transition: 1s;
+.contenedor-app .tablero .caja .posibles {
+  background: #e3ebf1;
 }
 .contenedor-app .tablero .caja .correcto {
-  background: #bbdefb;
   color: #0072e3;
 }
 .contenedor-app .tablero .caja .incorrecto {
@@ -211,6 +210,9 @@ html body {
 }
 .contenedor-app nav .contenedor-numeros button:hover {
   background: #dce3ed;
+}
+.contenedor-app nav .contenedor-numeros .oculto {
+  visibility: hidden;
 }
 
 @media screen and (max-width: 830px) {

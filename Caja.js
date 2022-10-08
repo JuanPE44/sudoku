@@ -34,7 +34,7 @@ class Caja {
         let caja = this.arrayCaja();
         for(let i=0;i<this.filas;i++) {
             for(let j=0;j<this.columnas;j++) {              
-                let c = new Cajita('cajita',i.toString()+j.toString());
+                let c = new Cajita('cajita',i.toString()+j.toString(),this.elemento);
                 let cajita = c.crearCajita();
                 caja[i][j] = cajita;
                 this.elemento.appendChild(cajita);
@@ -47,8 +47,7 @@ class Caja {
 
     clickCaja() {
         t.cajaActual = this; 
-        t.despintarCajaActual();    
-        t.pintarCajaActual();   
+        
     }
 }
 

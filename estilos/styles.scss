@@ -134,17 +134,16 @@ html {
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                color: #344861;
                 background: #fff;
                 font-size: 2.5rem;
             }
 
-            .circulo {
-                background: #f7cfd6;
-                transition: 1s;
+            .posibles {
+                background: #e3ebf1;
             }
             
             .correcto {
-                background: #bbdefb;
                 color: #0072e3;                
             }
 
@@ -246,6 +245,10 @@ html {
                 &:hover {
                     background: #dce3ed;
                 }
+            }
+
+            .oculto {
+                visibility: hidden;
             }
         }
     }

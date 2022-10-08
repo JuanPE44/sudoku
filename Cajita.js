@@ -1,11 +1,12 @@
 
 class Cajita extends Caja {
-    constructor(clase,id) {
+    constructor(clase,id,padre) {
         super(clase,id);
         this.elemento;
         this.error;
         this.marcado = false;
         this.actual = false;
+        this.padre = padre
     }
 
     crearCajita() {
@@ -24,7 +25,8 @@ class Cajita extends Caja {
             this.actual = true;     
             t.despintarActual();
             t.cajitaActual = this;        
-            t.pintarActual();
+            t.pintarActual();   
+            t.pintarPosibles(this.padre.id);         
         }
     }
 }

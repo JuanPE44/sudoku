@@ -77,9 +77,11 @@ class Tablero {
         this.cajasCorrectas = [];
         this.cajitaActual;
         this.cajaActual;
+        this.cajaAnterior;
         this.tablero = [];
         this.tableroSolucion = tableroSolucion[1];
         this.historial = [];
+        this.numerosCompletos = [0,0,0,0,0,0,0,0,0];
     }
 
     arrayCajas() {
@@ -188,27 +190,17 @@ class Tablero {
         for(let a=0;a<3;a++) {
             for(let b=0;b<3;b++) {
                 for(let c=0;c<3;c++) {                    
-                    for(let d=0;d<3;d++) { 
-                        /*                               
-                        setTimeout(()=>{
-                            setTimeout(()=> {
-                                setTimeout(()=>{
-                                    setTimeout(()=> {
-                                        */
-                                        this.cajas[a][c][b][d].innerHTML = this.tablero[i][j];                        
-                                        this.cajasCorrectas[a][c][b][d] = this.tableroSolucion[i][j];
-                                        j++;
-                                        if(j==9) {
-                                            i++;
-                                            j=0;
-                                        }
-                                        /*
-                                    },100 * d)                                     
-                                },100 *c)  
-                            },100 * b)                             
-                        },100 *a) 
-                        
-                        */
+                    for(let d=0;d<3;d++) {                                   
+                        this.cajas[a][c][b][d].innerHTML = this.tablero[i][j];    
+                        if(this.cajas[a][c][b][d].innerHTML !== ' ') {
+                            this.numerosCompletos[parseInt(this.cajas[a][c][b][d].innerHTML)-1]++;
+                        }                    
+                        this.cajasCorrectas[a][c][b][d] = this.tableroSolucion[i][j];
+                        j++;
+                        if(j==9) {
+                            i++;
+                            j=0;
+                        }
                     }
                 }
             }
@@ -223,7 +215,8 @@ class Tablero {
                 for(let b=0;b<3;b++) {
                     for(let c=0;c<3;c++) {                    
                         for(let d=0;d<3;d++) {                                                           
-                            this.cajas[a][c][b][d].classList.remove('actuales');                                                                                                   
+                            this.cajas[a][c][b][d].classList.remove('actuales');  
+                            this.cajas[a][c][b][d].classList.remove('posibles');                                                                                                   
                         }
                     }
                 }
@@ -245,17 +238,27 @@ class Tablero {
                 }
             }
         }
-        
     }
 
-    despintarCajaActual() {
 
-        //this.cajaActual.elemento.style.background = '';
-    }
 
-    pintarCajaActual() {
 
-        //this.cajaActual.elemento.style.background = '#f00';
+    pintarPosibles(id1) {
+        let id2 = this.cajitaActual.id;
+        for(let a=0;a<3;a++) {
+            for(let b=0;b<3;b++) {
+                for(let c=0;c<3;c++) {                    
+                    for(let d=0;d<3;d++) {      
+                        // caja actual
+                        this.cajas[id1[0]][id1[1]][c][d].classList.add('posibles')                          
+                        // fila actual
+                        this.cajas[id1[0]][b][id2[0]][d].classList.add('posibles');
+                        // columna actual
+                        this.cajas[a][id1[1]][c][id2[1]].classList.add('posibles');                                                                                  
+                    }
+                }
+            }
+        }
     }
 
     compararNumero(numero) {
@@ -266,12 +269,14 @@ class Tablero {
             actual.elemento.classList.add('correcto')
             actual.error = false;
             t.cajitaActual.marcado = true;
+            return true;
         } else {
             actual.elemento.classList.add('incorrecto');
             actual.error = true;
             this.despintarActual()
             t.cajitaActual.marcado = false;
             this.errores++;
+            return false;
         }             
     }
 
