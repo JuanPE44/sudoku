@@ -11,7 +11,6 @@ class Numeros {
             numero.addEventListener('click', (e)=> {                
                 if(t.jugando === true && t.cajitaActual !== undefined) {
                     if(t.cajitaActual.marcado === false && t.cajitaActual.elemento.innerHTML === ' ' || t.cajitaActual.elemento.classList.contains('incorrecto')) {
-                        t.compararNumero(e.target.innerHTML)
                         if(t.compararNumero(e.target.innerHTML)) {
                             
                             t.numerosCompletos[parseInt(e.target.innerHTML)-1]++;
@@ -22,11 +21,8 @@ class Numeros {
                         t.cajitaActual.elemento.innerHTML = numero.innerHTML;                        
                         t.historial.push(t.cajitaActual);
                         t.pintarActual();
-                        document.querySelector('.errores').innerHTML = `${t.errores}/3`; 
-                        if(t.errores === 3) {
-                            t.perder = true;
-                            t.perderPartida();
-                        }
+                        t.mostrarErrores()  
+                        t.comprobarSiGano();                      
                     }
                 }
                 

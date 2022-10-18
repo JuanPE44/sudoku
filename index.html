@@ -17,7 +17,8 @@
 <body>
     <div class="contenedor-app"> 
         <div class="header">
-            <span class="errores">0/3</span>
+            <button class="btn-reiniciar">Nueva partida</button>
+            <span class="errores">0</span>
             <div class="contenedor-tiempo">
                 <span class="tiempo">00:00</span>
                 <button class="tiempo-pausa"><i class="fa-solid fa-play"></i></button>
@@ -28,12 +29,12 @@
                 <button class="btn-iniciar">Nueva partida</button>
                 <button class="tiempo-pausa" style="display:none;"><i class="fa-solid fa-play"></i></button>
             </div>
-            <div class="contenedor-perder">
-                <h1>Perdiste:(</h1>
-                <button>Volver a jugar</button>
+            <div class="contenedor-ganar">
+                <h3>¡Excelente!</h3>
+                <ul class="informacion-win"></ul>
             </div>
         </div>    
-        <nav>
+        <nav class="nav">
             <div class="contenedor-titulo">
                 <h1>SUDOKU</h1>
             </div>
@@ -65,15 +66,15 @@
                 <button>7</button>
                 <button>8</button>
                 <button>9</button>
-            </div>
-        </nav>    
+            </div>            
+        </nav>          
     </div>
     
-    <script src="Tablero.js"></script>
-    <script src="Caja.js"></script>
-    <script src="Cajita.js"></script>
-    <script src="Botones.js"></script>
-    <script src="Numeros.js"></script>
-    <script src="Main.js"></script>
+    <script src="scripts/Tablero.js"></script>
+    <script src="scripts/Caja.js"></script>
+    <script src="scripts/Cajita.js"></script>
+    <script src="scripts/Botones.js"></script>
+    <script src="scripts/Numeros.js"></script>
+    <script src="scripts/Main.js"></script>
 </body>
 </html>

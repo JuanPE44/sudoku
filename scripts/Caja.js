@@ -30,17 +30,18 @@ class Caja {
     }
 
     rellenarCaja() {
-        
+        const fragmento = document.createDocumentFragment();  
         let caja = this.arrayCaja();
         for(let i=0;i<this.filas;i++) {
-            for(let j=0;j<this.columnas;j++) {              
+            for(let j=0;j<this.columnas;j++) {  
+                          
                 let c = new Cajita('cajita',i.toString()+j.toString(),this.elemento);
                 let cajita = c.crearCajita();
                 caja[i][j] = cajita;
-                this.elemento.appendChild(cajita);
+                fragmento.appendChild(cajita);
             }
         }
-
+        this.elemento.appendChild(fragmento);
         this.caja = caja;
         
     }

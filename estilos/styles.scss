@@ -36,14 +36,47 @@ html {
         width: 100%;
         display: flex;
         justify-content: space-between;
-        padding: 1rem;
+        padding: 1rem 0;
+        margin-bottom: 1rem;
         grid-area: h;
+            
+
+        .btn-reiniciar {
+            visibility: hidden;
+            font-size: 1.3rem;
+            padding: 1rem 1.5rem;
+            color: #fff;
+            background: #0072e3;
+            cursor: pointer;
+            border-radius: 3px;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            -ms-border-radius: 3px;
+            -o-border-radius: 3px;
+            border: 1px solid #fff;
+
+            &:hover {
+                background: #086bce;
+                transition: .2s;
+                -webkit-transition: .2s;
+                -moz-transition: .2s;
+                -ms-transition: .2s;
+                -o-transition: .2s;
+            }
+        }
 
         .errores {
-            font-size: 1.8rem;
+            visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            color: #0072e3;
+            font-weight: 100;
         }
         
         .contenedor-tiempo {
+            padding-right: 1rem;
             .tiempo {
                 font-size: 1.5rem;
                 color: #94a3b7;
@@ -83,6 +116,7 @@ html {
         gap: 2px;
         background: #344861;
         border: 2px solid #344861;
+        overflow: hidden;
 
         .contenedor-iniciar {
             position: absolute;
@@ -116,10 +150,66 @@ html {
                 }
             }
         }
-        
-        .contenedor-perder {
+
+        .contenedor-ganar {
             display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #0072e3 radial-gradient(circle at 50% 0,#82ffff,#0072e3 53%);
+            color: #fff;
+
+            h3 {
+                font-size: 3rem;
+                margin-top: 5rem;
+                margin-bottom: 3rem;
+            }
+
+            .informacion-win {
+                display: flex;
+                flex-direction: column;                
+                align-items: center;
+
+                .win-item {
+                    width: 240px;
+                    display: flex;                                        
+                    align-items: center;
+
+                    .win-icon {
+                        width: 24px;
+                        height: 24px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-right: 1rem;
+                        i {
+                            font-size: 2.4rem;
+                        }
+                    }
+
+                    .win-info {
+                        flex-grow: 1;
+                        display: flex;
+                        justify-content: space-between;
+                        padding: 1.5rem;
+
+                        span {
+                            font-size: 1.5rem;
+                        }
+
+                        
+                    }
+                    &:not(:last-child) .win-info {
+                        border-bottom: 3px solid #1b81e6;
+                    }
+                }
+
+                
+            }
+
         }
 
         .caja {
@@ -162,10 +252,11 @@ html {
         }                
     }      
     
-    nav {
+    .nav {
         width: 100%;
         display: flex;
         flex-direction: column;
+        justify-content: flex-start;
         grid-area: n;
         margin-left: 1.4rem;
 
@@ -190,6 +281,7 @@ html {
             align-items: center;    
     
             .boton {
+                color: #0072e3;
                 button {
                     width: 5rem;
                     height: 5rem;              
@@ -215,10 +307,26 @@ html {
 
                 h5 {
                     padding: .5rem;
-                    text-align: center;
-                    color: #0072e3;
+                    text-align: center;                    
                     font-size: 1.1rem;
                     font-weight: 100;
+                }
+            } 
+            
+            .boton-win {
+                color: #94a3b7;
+                pointer-events: none;
+                
+                button {
+                    cursor: auto;
+
+                    &:hover {
+                        background: #eaeef4;;
+                    }
+                }
+
+                i {
+                    color: #94a3b7 !important; 
                 }
             }
         }
@@ -248,10 +356,16 @@ html {
             }
 
             .oculto {
-                visibility: hidden;
+                color: #94a3b7;
+                cursor: auto;
+                pointer-events: none;
+
+                &:hover {
+                    background: #eaeef4;;
+                }
             }
         }
-    }
+    }    
 }
 
 @media screen and (max-width: 830px) {
@@ -265,7 +379,7 @@ html {
         
         
 
-        nav {
+        .nav {
             .contenedor-titulo {
                 display: none;
             }
