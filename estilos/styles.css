@@ -340,6 +340,7 @@ html body {
 @media screen and (max-width: 530px) {
   .contenedor-app {
     transform: scale(0.9);
+    padding-top: 2rem;
   }
 }
 @media screen and (max-width: 460px) {
