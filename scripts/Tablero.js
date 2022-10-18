@@ -357,7 +357,7 @@ class Tablero {
                             ${iconoMejor}
                             <div class="win-info">
                                 <span>Mejor tiempo:</span>
-                                <span>10:00</span>
+                                <span>00:00</span>
                             </div>
                           </li>`;
         this.despintarActual();
