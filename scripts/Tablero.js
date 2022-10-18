@@ -80,7 +80,7 @@ class Tablero {
         this.cajaActual;
         this.cajaAnterior;
         this.tablero = [];
-        this.tableroSolucion = tableroSolucion[1];
+        this.tableroSolucion = [];
         this.historial = [];
         this.numerosCompletos = [0, 0, 0, 0, 0, 0, 0, 0, 0];
         this.tiempoActual = '00:00';
