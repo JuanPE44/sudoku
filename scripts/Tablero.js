@@ -83,7 +83,7 @@ class Tablero {
         this.tableroSolucion = [];
         this.historial = [];
         this.numerosCompletos = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-        this.tiempoActual = '00:00';
+        this.tiempoActual = '13:17';
         this.intervalo;
     }
 
@@ -320,6 +320,31 @@ class Tablero {
         }
     }
 
+    actualizarTiempos() {
+        let tiempos = JSON.parse(localStorage.getItem('tiempos'));
+        tiempos.push(this.tiempoActual);
+        localStorage.setItem('tiempos', JSON.stringify(tiempos));
+    }
+
+    obtenerMejorTiempo() {
+        let tiempos = JSON.parse(localStorage.getItem('tiempos'));
+        let minutoMin = 999999999;
+        let segundoMin = 999999999;
+        let min;
+        tiempos.forEach(t => {
+            min = t.split(':');            
+            if(parseInt(min[0])<parseInt(minutoMin)) {
+                minutoMin = min[0];
+                segundoMin = min[1];                
+            } else if (parseInt(min[0])==parseInt(minutoMin) && parseInt(min[1])<parseInt(segundoMin)) {
+                segundoMin = min[1];
+            }
+            
+        })
+        
+        return minutoMin+':'+segundoMin;
+    }
+
     reiniciarPartida() {
         
     }
@@ -330,6 +355,7 @@ class Tablero {
         const cajitas = document.querySelectorAll('.cajita');
         const botonPausar = document.querySelector('.tiempo-pausa');        
         this.pausarTiempo(botonPausar,cajitas);
+        this.actualizarTiempos();
         const divTablero = document.querySelector('.tablero');
         const contGanar = document.querySelector('.contenedor-ganar');
         const info = document.querySelector('.informacion-win');
@@ -357,7 +383,7 @@ class Tablero {
                             ${iconoMejor}
                             <div class="win-info">
                                 <span>Mejor tiempo:</span>
-                                <span>10:00</span>
+                                <span>${this.obtenerMejorTiempo()}</span>
                             </div>
                           </li>`;
         this.despintarActual();

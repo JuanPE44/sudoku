@@ -22,8 +22,7 @@ class Numeros {
                         t.historial.push(t.cajitaActual);
                         t.pintarActual();
                         t.mostrarErrores()  
-                        t.comprobarSiGano();    
-                                       
+                        t.comprobarSiGano();                                       
                     }
                 }
                 
