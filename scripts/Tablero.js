@@ -83,7 +83,7 @@ class Tablero {
         this.tableroSolucion = [];
         this.historial = [];
         this.numerosCompletos = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-        this.tiempoActual = '13:17';
+        this.tiempoActual = '00:00';
         this.intervalo;
     }
 
@@ -127,12 +127,12 @@ class Tablero {
     iniciarPartida() {
         const contenedorIniciar = document.querySelector('.contenedor-iniciar');
         const iniciar = document.querySelector('.btn-iniciar');
-        const reiniciar = document.querySelector('.btn-reiniciar');
+        const atras = document.querySelector('.btn-atras');
 
         iniciar.addEventListener('click', () => {
             contenedorIniciar.style.display = 'none';
             this.divErrores.style.visibility = 'visible';
-            reiniciar.style.visibility = 'visible';
+            atras.style.visibility = 'visible';
             this.jugando = true;
             let numRandom = Math.floor(Math.random() * tablero.length);
             this.tablero = tablero[numRandom];
@@ -142,6 +142,10 @@ class Tablero {
             btnBorrar.seleccionarBoton()
             btnRetroceder.seleccionarBoton()
             t.controlarTiempo();
+        })
+
+        atras.addEventListener('click', ()=> {
+            location.reload()       
         })
     }
 
@@ -345,9 +349,7 @@ class Tablero {
         return minutoMin+':'+segundoMin;
     }
 
-    reiniciarPartida() {
-        
-    }
+
 
     ganarPartida() {
         this.jugando = false;

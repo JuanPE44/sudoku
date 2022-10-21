@@ -15,6 +15,4 @@ const btnRetroceder = new Boton('.btn-retroceder');
 
 t.rellenarTablero();
 t.iniciarPartida();
-
-
 t.obtenerMejorTiempo()

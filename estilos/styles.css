@@ -29,6 +29,7 @@ html body {
   box-shadow: 10px 10px 30px rgba(34, 34, 34, 0.1098039216);
 }
 .contenedor-app .header {
+  position: relative;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -36,29 +37,25 @@ html body {
   margin-bottom: 1rem;
   grid-area: h;
 }
-.contenedor-app .header .btn-reiniciar {
+.contenedor-app .header .btn-atras {
   visibility: hidden;
-  font-size: 1.3rem;
-  padding: 1rem 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.5rem;
   color: #fff;
   background: #0072e3;
   cursor: pointer;
-  border-radius: 3px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
+  border-radius: 50%;
   border: 1px solid #fff;
-}
-.contenedor-app .header .btn-reiniciar:hover {
-  background: #086bce;
-  transition: 0.2s;
-  -webkit-transition: 0.2s;
-  -moz-transition: 0.2s;
-  -ms-transition: 0.2s;
-  -o-transition: 0.2s;
+  z-index: 20;
 }
 .contenedor-app .header .errores {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
   visibility: hidden;
   display: flex;
   justify-content: center;
@@ -66,9 +63,11 @@ html body {
   font-size: 2rem;
   color: #0072e3;
   font-weight: 100;
+  z-index: 10;
 }
 .contenedor-app .header .contenedor-tiempo {
   padding-right: 1rem;
+  z-index: 20;
 }
 .contenedor-app .header .contenedor-tiempo .tiempo {
   font-size: 1.5rem;
@@ -113,6 +112,7 @@ html body {
   justify-content: center;
   align-items: center;
   background: rgba(234, 238, 244, 0.4431372549);
+  transition: 4s;
 }
 .contenedor-app .tablero .contenedor-iniciar .btn-iniciar {
   font-size: 1.7rem;

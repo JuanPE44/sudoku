@@ -34,6 +34,7 @@ html {
     box-shadow: 10px 10px 30px #2222221c;
 
     .header {
+        position: relative;
         width: 100%;
         display: flex;
         justify-content: space-between;
@@ -42,31 +43,27 @@ html {
         grid-area: h;
             
 
-        .btn-reiniciar {
+        .btn-atras {            
             visibility: hidden;
-            font-size: 1.3rem;
-            padding: 1rem 1.5rem;
+            width: 3rem;
+            height: 3rem;  
+            font-size: 1.5rem;
             color: #fff;
             background: #0072e3;
             cursor: pointer;
-            border-radius: 3px;
-            -webkit-border-radius: 3px;
-            -moz-border-radius: 3px;
-            -ms-border-radius: 3px;
-            -o-border-radius: 3px;
-            border: 1px solid #fff;
+            border-radius: 50%;
+            border: 1px solid #fff;    
+            z-index: 20;        
 
-            &:hover {
-                background: #086bce;
-                transition: .2s;
-                -webkit-transition: .2s;
-                -moz-transition: .2s;
-                -ms-transition: .2s;
-                -o-transition: .2s;
-            }
         }
 
         .errores {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
             visibility: hidden;
             display: flex;
             justify-content: center;
@@ -74,10 +71,12 @@ html {
             font-size: 2rem;
             color: #0072e3;
             font-weight: 100;
+            z-index: 10;
         }
         
         .contenedor-tiempo {
             padding-right: 1rem;
+            z-index: 20;
             .tiempo {
                 font-size: 1.5rem;
                 color: #94a3b7;
@@ -128,6 +127,7 @@ html {
             justify-content: center;
             align-items: center;
             background: #eaeef471;
+            transition: 4s;
 
             .btn-iniciar {                
                 font-size: 1.7rem;

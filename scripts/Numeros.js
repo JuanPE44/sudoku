@@ -10,7 +10,7 @@ class Numeros {
         this.numeros.forEach(numero => {
             numero.addEventListener('click', (e)=> {                
                 if(t.jugando === true && t.cajitaActual !== undefined) {
-                    if(t.cajitaActual.marcado === false && t.cajitaActual.elemento.innerHTML === ' ' || t.cajitaActual.elemento.classList.contains('incorrecto')) {
+                    if(t.cajitaActual.marcado === false && t.cajitaActual.elemento.innerHTML === ' ') {
                         if(t.compararNumero(e.target.innerHTML)) {
                             
                             t.numerosCompletos[parseInt(e.target.innerHTML)-1]++;
