@@ -1,80 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sudoku</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="estilos/styles.css">
-
-    <script src="https://kit.fontawesome.com/56af8815be.js" crossorigin="anonymous"></script>
-</head>
-<body>
-    <div class="contenedor-app"> 
-        <div class="header">
-            <button class="btn-atras"><i class="fa-solid fa-chevron-left"></i></button>
-            <span class="errores">0</span>
-            <div class="contenedor-tiempo">
-                <span class="tiempo">00:00</span>
-                <button class="tiempo-pausa"><i class="fa-solid fa-play"></i></button>
-            </div>
-        </div>       
-        <div class= "tablero" id="tablero">
-            <div class="contenedor-iniciar">
-                <button class="btn-iniciar">Nueva partida</button>
-                <button class="tiempo-pausa" style="display:none;"><i class="fa-solid fa-play"></i></button>
-            </div>
-            <div class="contenedor-ganar">
-                <h3>¡Excelente!</h3>
-                <ul class="informacion-win"></ul>
-            </div>
-        </div>    
-        <nav class="nav">
-            <div class="contenedor-titulo">
-                <h1>SUDOKU</h1>
-            </div>
-            <div class="contenedor-botones">
-                <div class="boton boton-win">
-                    <button class="btn-retroceder"><i class="fa-solid fa-arrow-rotate-left"></i></button>
-                    <h5>Deshacer</h5>
-                </div>
-                <div class="boton">
-                    <button class="btn-borrar"><i class="fa-regular fa-trash-can"></i></button>
-                    <h5>Borrar</h5>
-                </div>
-                <div class="boton boton-win">
-                    <button><i class="fa-regular fa-pen-to-square"></i></button>
-                    <h5>Notas</h5>
-                </div>
-                <div class="boton boton-win">
-                    <button><i class="fa-regular fa-lightbulb"></i></button>
-                    <h5>Pista</h5>
-                </div>
-            </div>            
-            <div class="contenedor-numeros">
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>4</button>
-                <button>5</button>
-                <button>6</button>
-                <button>7</button>
-                <button>8</button>
-                <button>9</button>
-            </div>            
-        </nav>          
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="estilos/styles.css" />
+    <script
+      src="https://kit.fontawesome.com/56af8815be.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="contenedor-app">
+      <div class="header">
+        <button class="btn-atras">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <span class="errores">0</span>
+        <div class="contenedor-tiempo">
+          <span class="tiempo">00:00</span>
+          <button class="tiempo-pausa"><i class="fa-solid fa-play"></i></button>
+        </div>
+      </div>
+      <div class="tablero" id="tablero">
+        <div class="contenedor-iniciar">
+          <button class="btn-iniciar">Nueva partida</button>
+          <button class="tiempo-pausa" style="display: none">
+            <i class="fa-solid fa-play"></i>
+          </button>
+        </div>
+        <div class="contenedor-ganar">
+          <h3>¡Excelente!</h3>
+          <ul class="informacion-win"></ul>
+        </div>
+      </div>
+      <nav class="nav">
+        <div class="contenedor-titulo">
+          <h1>SUDOKU</h1>
+        </div>
+        <div class="contenedor-botones">
+          <div class="boton boton-win">
+            <button class="btn-retroceder">
+              <i class="fa-solid fa-arrow-rotate-left"></i>
+            </button>
+            <h5>Deshacer</h5>
+          </div>
+          <div class="boton">
+            <button class="btn-borrar">
+              <i class="fa-regular fa-trash-can"></i>
+            </button>
+            <h5>Borrar</h5>
+          </div>
+          <div class="boton boton-win">
+            <button><i class="fa-regular fa-pen-to-square"></i></button>
+            <h5>Notas</h5>
+          </div>
+          <div class="boton boton-win">
+            <button><i class="fa-regular fa-lightbulb"></i></button>
+            <h5>Pista</h5>
+          </div>
+        </div>
+        <div class="contenedor-numeros">
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>4</button>
+          <button>5</button>
+          <button>6</button>
+          <button>7</button>
+          <button>8</button>
+          <button>9</button>
+        </div>
+      </nav>
     </div>
-    
     <script src="scripts/Tablero.js"></script>
     <script src="scripts/Caja.js"></script>
     <script src="scripts/Cajita.js"></script>
     <script src="scripts/Botones.js"></script>
     <script src="scripts/Numeros.js"></script>
     <script src="scripts/Main.js"></script>
-</body>
+  </body>
 </html>
