@@ -10,7 +10,6 @@ Este es un proyecto del juego Sudoku utilizando HTML, Sass y JavaScript. El jueg
 ## Características
 
 - Interfaz gráfica intuitiva y fácil de usar.
-- Generación automática de tableros de Sudoku únicos y resolubles.
 - Verificación en tiempo real de las respuestas del jugador.
 - Opción para reiniciar el juego en cualquier momento.
 - Muestra el tiempo transcurrido y la puntuación del jugador.
