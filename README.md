@@ -1,6 +1,6 @@
 # Juego Sudoku
 
-Este es un proyecto del juego Sudoku utilizando HTML, Sass y JavaScript. El juego Sudoku es un rompecabezas numérico en el que el objetivo es completar una cuadrícula de 9x9 con números del 1 al 9, asegurándose de que no haya repeticiones en filas, columnas y subgrillas.
+Este es un proyecto del juego Sudoku utilizando HTML, Sass y JavaScript. El juego Sudoku es un rompecabezas numérico en el que el objetivo es completar una cuadrícula de 9x9 con números del 1 al 9, asegurándose de que no haya repeticiones en filas, columnas y subgril
 
 ## Demostración
 
